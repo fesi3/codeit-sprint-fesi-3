@@ -6,18 +6,13 @@ import { useRouter } from 'next/router';
 type NoDataProps = {
   comment: string;
   toPage?: string;
-  text?: string;
 };
 
-const NoData = ({ comment, toPage, text }: NoDataProps) => {
+const NoData = ({ comment, toPage }: NoDataProps) => {
   const router = useRouter();
 
   const onClickButton = () => {
-    if (toPage) {
-      router.push(toPage); // `toPage`가 있으면 해당 경로로 이동
-    } else {
-      router.push('/');
-    }
+    router.push('/meetings');
   };
 
   return (
@@ -26,7 +21,7 @@ const NoData = ({ comment, toPage, text }: NoDataProps) => {
       <p>{comment} 없어요!</p>
       {toPage ? (
         <div className="mt-10">
-          <Button type="review_create" text={text} onClick={onClickButton} />
+          <Button type="review_create" text={toPage} onClick={onClickButton} />
         </div>
       ) : null}
     </div>
